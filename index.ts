@@ -25,7 +25,16 @@ server.listen(port, () =>{
 io.on("connection", (socket: any) =>{
     console.log(socket.id)
 
+    socket.on("online_bar_add", (data: string) =>{
+        socket.emit("online_bar_add", data + "|" + socket.id)
+        socket.broadcast.emit("online_bar_add", data + "|" + socket.id)
+    });
+    socket.on("disconnected", (data: string) =>{
+        socket.broadcast.emit("disconnected" ,socket.id)
+        console.log(data)
+    });
     socket.on("message", (data: string) =>{
-        socket.broadcast.emit(data)
+        socket.broadcast.emit("message", data)
+        socket.emit("message", data)
     })
 });
