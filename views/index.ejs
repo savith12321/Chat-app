@@ -10,25 +10,32 @@
     <title>Chat App</title>
 </head>
 <body>
-    <div class="online-bar bg-dark"><center><h1 class="online_title">online</h1></center><br><center><div class="online_bar"></div></div></center></div>
+    <div class="online-bar bg-dark">
+        <center>
+            <h1 class="online_title">online</h1>
+        </center>
+        <br>
+        <center>
+            <div class="online_bar"></div>
+        </center>
+    </div>
     <div id="message_container"></div>
     <div class="input-group dock-bottom">
         <input type="text" class="form-control" placeholder="Type a Message To Send" id='message_input'>
         <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="sendMessage()">Send</button>
     </div>
     <script>
-        window.addEventListener('beforeunload', function () {
-            socket.emit("disconnected", "lol")
-        }, false);
-        const name = prompt("Please type a user name");
-
+        var name =prompt("Please type a user name");
+        console.log(name)
         if (name == undefined || name == null) {
             window.location = "/error?message=the user name cant be null";
         }else if ( name.toLowerCase().indexOf("|") != -1 ) {
             window.location = "/error?message=the user name contains invalid character \"|\"";
         }
-
-        const socket = io.connect("http://localhost:3000")
+        window.addEventListener('beforeunload', function () {
+            socket.emit("disconnected", name)
+        }, false);
+        const socket = io.connect("http://localhost:3000");
         socket.emit("online_bar_add", name)
 
         document.addEventListener("keyup", function(event) {
@@ -37,8 +44,7 @@
             }
         });
         socket.on("message", (data) =>{
-            html_content = markdown.toHTML( data );
-            document.getElementById("message_container").innerHTML += html_content;
+            document.getElementById("message_container").innerHTML += markdown.toHTML(data);
         });
         socket.on("disconnected", (data) =>{
             document.getElementById(data).remove();
@@ -47,7 +53,7 @@
             var name = data.split("|")[0]
             var id = data.split("|")[1]
 
-            var online_bar = document.querySelector(".online_bar").innerHTML += `<h6 id="${id}">${name}</h6>`;
+            var online_bar = document.querySelector(".online_bar").innerHTML += `<h6 id="${id}">${markdown.toHTML(name)}</h6>`;
         });
         const sendMessage = () =>{  
             const input_box = document.getElementById("message_input");
