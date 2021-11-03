@@ -8,6 +8,7 @@ const server = http.createServer(app);
 const io = require("socket.io")(server, {cors: {origin: "*"}});
 const members: any = [];
 var messages: any = [];
+var admin_cookie: string = randomChar(40);
 
 
 app.use(cookieParser());
@@ -23,8 +24,23 @@ app.get("/", (req:any, res: any) =>{
     })
 });
 
+app.get("/admin", (req, res) =>{
+    res.render("getAdmin.ejs", {
+        cookie: admin_cookie
+    })
+})
+
+app.get("/admin/reset", (req, res) =>{
+    if(req.cookies.admin && req.cookies.admin == admin_cookie){
+        admin_cookie = randomChar(100);
+        res.redirect("/admin")
+    }else{
+        res.status(403).send({error: true, message: "Admin Only Page", code: 403});
+    }
+})
+
 app.get("/online", (req, res) =>{
-    if(req.cookies.admin && req.cookies.admin == "I-am-An-Admin-No-One-can-st0p-m@"){
+    if(req.cookies.admin && req.cookies.admin == admin_cookie){
         res.send(members)
     }else{
         res.status(403).send({error: true, message: "Admin Only Page", code: 403});
@@ -32,7 +48,7 @@ app.get("/online", (req, res) =>{
 })
 
 app.get("/messages", (req, res) =>{
-    if(req.cookies.admin && req.cookies.admin == "I-am-An-Admin-No-One-can-st0p-m@"){
+    if(req.cookies.admin && req.cookies.admin == admin_cookie){
         res.send(messages)
     }else{
         res.status(403).send({error: true, message: "Admin Only Page", code: 403});
@@ -40,7 +56,7 @@ app.get("/messages", (req, res) =>{
 })
 
 app.get("/messages/clear", (req, res) =>{
-    if(req.cookies.admin && req.cookies.admin == "I-am-An-Admin-No-One-can-st0p-m@"){
+    if(req.cookies.admin && req.cookies.admin == admin_cookie){
         messages = [];
         res.redirect("/")
     }else{
@@ -91,3 +107,14 @@ io.on("connection", (socket: any) =>{
         messages.push(data)
     })
 });
+
+function randomChar(length: number) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}

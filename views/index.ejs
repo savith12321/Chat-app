@@ -10,7 +10,7 @@
     <title>Chat App</title>
 </head>
 <body>
-    <div class="online-bar bg-dark">
+    <div class="online-bar">
         <center>
             <h1 class="online_title">online</h1>
         </center>
@@ -19,15 +19,15 @@
             <div class="online_bar"></div>
         </center>
     </div>
-    <div id="message_container"></div>
+    <div id="message_container" class="scroll"></div>
     <div class="input-group dock-bottom">
         <input type="text" class="form-control" placeholder="Type a Message To Send" id='message_input'>
         <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="sendMessage()">Send</button>
     </div>
     <script>
-        var name =prompt("Please type a user name");
+        const name = prompt("Please type a user name");
         console.log(name)
-        if (name == undefined || name == null) {
+        if (name == undefined || name == null || name == "") {
             window.location = "/error?message=the user name cant be null";
         }else if ( name.toLowerCase().indexOf("|") != -1 ) {
             window.location = "/error?message=the user name contains invalid character \"|\"";
@@ -67,6 +67,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+        #message_container{
+            background-color: #36393f;
+            width: 185vh;
+            height: 95vh;
+            color: white;
+        }
     	.dock-bottom{
     	    position: fixed;
     	    bottom: 0;
@@ -82,18 +88,37 @@
         .online_title{
             font-family: Satisfy;
         }
-        body::-webkit-scrollbar {
+        #message_container::-webkit-scrollbar {
             width: 16px;
         }
-        body::-webkit-scrollbar-thumb {
+        #message_container::-webkit-scrollbar-thumb {
             height: 56px;
             border-radius: 8px;
             border: 4px solid transparent;
             background-clip: content-box;
-            background-color: var(--yt-spec-text-secondary);
+            background-color: #202225;
         }
-
+        ::-webkit-scrollbar-track {
+            background: #2e3338;
+        }
+        .scroll{
+            overflow-y: scroll;
+        }
+        .online-bar{
+            background-color: #202225;
+        }
+        .online_bar{
+            background-color: #202225;
+        }
+        #message_input{
+            background-color: #40444b !important;
+            border: none;
+            color: #ffffff;
+        }
+        body{
+            background-color: #2e3338;
+            color: whitesmoke;
+        }
     </style>
 </body>
 </html>
-
