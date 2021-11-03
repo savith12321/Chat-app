@@ -10,8 +10,10 @@ const members: any = [];
 var messages: any = [];
 var admin_cookie: string = randomChar(40);
 
-
 app.use(cookieParser());
+app.use(express.static(`${__dirname}/assets`));
+app.locals.basedir = `${__dirname}/assets`;
+
 app.get("/", (req:any, res: any) =>{
     var isAdmin;
     if(req.cookies.admin && req.cookies.admin == "I-am-An-Admin-No-One-can-st0p-m@"){
@@ -113,8 +115,7 @@ function randomChar(length: number) {
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
     for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
    return result;
 }
