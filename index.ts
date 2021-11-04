@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http"
 import socketio from "socket.io";
+import chalk from "chalk";
 import cookieParser from 'cookie-parser'
 
 const app = express();
@@ -78,14 +79,13 @@ app.get("/*", (req, res) =>{
 })
 const port = process.env.PORT || 3000;
 server.listen(port, () =>{
-    console.log(`server is online on http://localhost:${port}`)
+    logger(`server is online on http://localhost:${port}`)
 });
 
 io.on("connection", (socket: any) =>{
-    console.log(socket.id)
     for (const member of members){
         socket.emit("online_bar_add", member)
-        //console.log(member)
+        //logger(member)
     }
     for(const message of messages){
         socket.emit('message', message)
@@ -94,14 +94,15 @@ io.on("connection", (socket: any) =>{
         socket.emit("online_bar_add", data + "|" + socket.id)
         socket.broadcast.emit("online_bar_add", data + "|" + socket.id)
         members.push(data + "|" + socket.id)
+        logger(`member joined name = ${data} and socket_id = ${socket.id}`)
     });
     socket.on("disconnected", (data: string) =>{
         socket.broadcast.emit("disconnected" ,socket.id)
-        //console.log(data)
+        //logger(data)
         const index = members.indexOf(data + "|" + socket.id);
-        //console.log(members);
+        //logger(members);
         members.splice(index, 1);
-        //console.log(members)
+        //logger(members)
     });
     socket.on("message", (data: string) =>{
         socket.broadcast.emit("message", data)
@@ -118,4 +119,28 @@ function randomChar(length: number) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
    return result;
+}
+
+const logger = (log : string) =>{
+    let date_ob = new Date();
+
+    // current date
+    // adjust 0 before single digit date
+    let date = ("0" + date_ob.getDate()).slice(-2);
+
+    // current month
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year = date_ob.getFullYear();
+
+    // current hours
+    let hours = date_ob.getHours();
+
+    // current minutes
+    let minutes = date_ob.getMinutes();
+
+    // current seconds
+    let seconds = date_ob.getSeconds();
+    console.log(chalk.magenta(year + "-" + month + "-" + date + " | " + hours + ":" + minutes + ":" + seconds)+chalk.yellow(" :- ")+ chalk.green(log))
 }

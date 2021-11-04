@@ -64,7 +64,9 @@
             );
             const sendMessage = ()=>{
                 const input_box = document.getElementById("message_input");
-                const message_to_send = input_box.value;
+                var message_to_send = input_box.value;
+                message_to_send = message_to_send.replace(":)", "😊")
+                message_to_send = message_to_send.replace("<3", "❤️")
                 if (message_to_send == null || message_to_send == undefined || message_to_send == "")
                     return
                 input_box.value = "";
