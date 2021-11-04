@@ -2,6 +2,7 @@ import express from "express";
 import http from "http"
 import socketio from "socket.io";
 import chalk from "chalk";
+import config from "./config.json"
 import cookieParser from 'cookie-parser'
 
 const app = express();
@@ -17,13 +18,14 @@ app.locals.basedir = `${__dirname}/assets`;
 
 app.get("/", (req:any, res: any) =>{
     var isAdmin;
-    if(req.cookies.admin && req.cookies.admin == "I-am-An-Admin-No-One-can-st0p-m@"){
+    if(req.cookies.admin && req.cookies.admin == admin_cookie){
         isAdmin = true;
     }else{
         isAdmin = false;
     }
     res.render("index.ejs", {
-        admin: isAdmin
+        admin: isAdmin,
+        url: config.url
     })
 });
 

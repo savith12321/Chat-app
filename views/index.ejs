@@ -33,7 +33,7 @@
             window.addEventListener('beforeunload', function() {
                 socket.emit("disconnected", name)
             }, false);
-            const socket = io.connect("http://localhost:3000");
+            const socket = io.connect("<%= url %>");
             socket.emit("online_bar_add", name)
 
             document.addEventListener("keyup", function(event) {

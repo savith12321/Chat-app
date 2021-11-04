@@ -1,0 +1,100 @@
+2021-11-04T02:56:32.797758+00:00 heroku[web.1]: Starting process with command `ts-node index.ts`
+2021-11-04T02:56:34.144919+00:00 app[web.1]: bash: ts-node: command not found
+2021-11-04T02:56:34.315883+00:00 heroku[web.1]: Process exited with status 127
+2021-11-04T02:56:34.365820+00:00 heroku[web.1]: State changed from starting to crashed
+2021-11-04T02:57:07.089989+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=d7b65679-59d6-4dd9-a82a-47195656169d fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T02:57:07.692924+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=70856939-b409-4ff3-8c68-785f87bc33e3 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T02:57:26.610956+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=e75c145b-a2cb-4946-b9f8-f9dd3ef3fa81 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T02:57:27.206618+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=06a2e51a-9325-4d80-aa0b-a9304f7df13c fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:04:43.000000+00:00 app[api]: Build started by user isavith.nishitha@gmail.com
+2021-11-04T03:04:56.731031+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=7bb97ab0-8952-4b2b-af8e-0144b8c28878 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:04:57.285044+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=ad12ec74-a4f9-4077-bd54-661ef5a7afdd fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:05:01.903939+00:00 app[api]: Deploy 2fa2de79 by user isavith.nishitha@gmail.com
+2021-11-04T03:05:01.903939+00:00 app[api]: Release v6 created by user isavith.nishitha@gmail.com
+2021-11-04T03:05:02.276078+00:00 heroku[web.1]: State changed from crashed to starting
+2021-11-04T03:05:04.666967+00:00 heroku[web.1]: Starting process with command `node node_modules/ts-node/dist/bin.js index.ts`
+2021-11-04T03:05:05.000000+00:00 app[api]: Build succeeded
+2021-11-04T03:05:05.547974+00:00 app[web.1]: internal/modules/cjs/loader.js:905
+2021-11-04T03:05:05.547984+00:00 app[web.1]: throw err;
+2021-11-04T03:05:05.547985+00:00 app[web.1]: ^
+2021-11-04T03:05:05.547985+00:00 app[web.1]: 
+2021-11-04T03:05:05.547985+00:00 app[web.1]: Error: Cannot find module '/app/node_modules/ts-node/dist/bin.js'
+2021-11-04T03:05:05.547986+00:00 app[web.1]: at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)
+2021-11-04T03:05:05.547986+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:746:27)
+2021-11-04T03:05:05.547987+00:00 app[web.1]: at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)
+2021-11-04T03:05:05.547987+00:00 app[web.1]: at internal/main/run_main_module.js:17:47 {
+2021-11-04T03:05:05.547987+00:00 app[web.1]: code: 'MODULE_NOT_FOUND',
+2021-11-04T03:05:05.547988+00:00 app[web.1]: requireStack: []
+2021-11-04T03:05:05.547988+00:00 app[web.1]: }
+2021-11-04T03:05:05.664445+00:00 heroku[web.1]: Process exited with status 1
+2021-11-04T03:05:05.761493+00:00 heroku[web.1]: State changed from starting to crashed
+2021-11-04T03:05:05.765331+00:00 heroku[web.1]: State changed from crashed to starting
+2021-11-04T03:05:07.650640+00:00 heroku[web.1]: Starting process with command `node node_modules/ts-node/dist/bin.js index.ts`
+2021-11-04T03:05:08.377375+00:00 app[web.1]: internal/modules/cjs/loader.js:905
+2021-11-04T03:05:08.377388+00:00 app[web.1]: throw err;
+2021-11-04T03:05:08.377389+00:00 app[web.1]: ^
+2021-11-04T03:05:08.377389+00:00 app[web.1]: 
+2021-11-04T03:05:08.377390+00:00 app[web.1]: Error: Cannot find module '/app/node_modules/ts-node/dist/bin.js'
+2021-11-04T03:05:08.377390+00:00 app[web.1]: at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)
+2021-11-04T03:05:08.377390+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:746:27)
+2021-11-04T03:05:08.377391+00:00 app[web.1]: at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)
+2021-11-04T03:05:08.377391+00:00 app[web.1]: at internal/main/run_main_module.js:17:47 {
+2021-11-04T03:05:08.377391+00:00 app[web.1]: code: 'MODULE_NOT_FOUND',
+2021-11-04T03:05:08.377391+00:00 app[web.1]: requireStack: []
+2021-11-04T03:05:08.377392+00:00 app[web.1]: }
+2021-11-04T03:05:08.484606+00:00 heroku[web.1]: Process exited with status 1
+2021-11-04T03:05:08.596183+00:00 heroku[web.1]: State changed from starting to crashed
+2021-11-04T03:05:47.392571+00:00 app[api]: Starting process with command `bash` by user isavith.nishitha@gmail.com
+2021-11-04T03:05:50.054795+00:00 heroku[run.8522]: Awaiting client
+2021-11-04T03:05:50.066947+00:00 heroku[run.8522]: State changed from starting to up
+2021-11-04T03:05:50.094305+00:00 heroku[run.8522]: Starting process with command `bash`
+2021-11-04T03:06:06.267612+00:00 heroku[run.8522]: Client connection closed. Sending SIGHUP to all processes
+2021-11-04T03:06:06.795749+00:00 heroku[run.8522]: Process exited with status 129
+2021-11-04T03:06:06.897265+00:00 heroku[run.8522]: State changed from up to complete
+2021-11-04T03:06:12.236200+00:00 app[api]: Starting process with command `bash` by user isavith.nishitha@gmail.com
+2021-11-04T03:06:14.869641+00:00 heroku[run.2263]: Awaiting client
+2021-11-04T03:06:14.905943+00:00 heroku[run.2263]: Starting process with command `bash`
+2021-11-04T03:06:15.000190+00:00 heroku[run.2263]: State changed from starting to up
+2021-11-04T03:06:43.560129+00:00 heroku[run.2263]: Client connection closed. Sending SIGHUP to all processes
+2021-11-04T03:06:44.095804+00:00 heroku[run.2263]: Process exited with status 129
+2021-11-04T03:06:44.227238+00:00 heroku[run.2263]: State changed from up to complete
+2021-11-04T03:08:55.000000+00:00 app[api]: Build started by user isavith.nishitha@gmail.com
+2021-11-04T03:08:57.295986+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=3735e0ee-bd32-4484-ae44-004b16db5373 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:08:57.798407+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=2c1c557f-e83a-4e2a-9c7b-6a5ef7f54749 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:03.376915+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=c5a5bfb4-4203-4ef7-8c7c-9859f59ece61 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:03.812093+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=76ac4d76-5495-4d7f-b922-0665534fb742 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:06.387583+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=316cc76d-7591-4c53-a25d-81615a9e7fc7 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:06.842629+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=7364e12f-ec50-4a49-ba50-2c5695961a63 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:15.691738+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=water-chat.herokuapp.com request_id=9167cdef-6705-43cd-9dfc-b2008e90b33f fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:15.971875+00:00 app[api]: Deploy 6dc5c90d by user isavith.nishitha@gmail.com
+2021-11-04T03:09:15.971875+00:00 app[api]: Release v7 created by user isavith.nishitha@gmail.com
+2021-11-04T03:09:16.173226+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=65f13507-e4ce-4693-918a-eda4db37faa2 fwd="123.231.125.171" dyno= connect= service= status=503 bytes= protocol=https
+2021-11-04T03:09:16.271870+00:00 heroku[web.1]: State changed from crashed to starting
+2021-11-04T03:09:19.000000+00:00 app[api]: Build succeeded
+2021-11-04T03:09:19.203981+00:00 heroku[web.1]: Starting process with command `node node_modules/ts-node/dist/bin.js index.ts`
+2021-11-04T03:09:23.943742+00:00 app[web.1]: 2021-11-04 | 3:9:23 :- server is online on http://localhost:54957
+2021-11-04T03:09:24.536570+00:00 heroku[web.1]: State changed from starting to up
+2021-11-04T03:09:31.108872+00:00 heroku[router]: at=info method=GET path="/" host=water-chat.herokuapp.com request_id=512ebeac-7a38-4f16-9abc-5f519830d78a fwd="123.231.125.171" dyno=web.1 connect=0ms service=19ms status=200 bytes=6492 protocol=https
+2021-11-04T03:09:31.462364+00:00 heroku[router]: at=info method=GET path="/js/socket.io.js" host=water-chat.herokuapp.com request_id=a6897fdc-4365-48de-b082-8f0acafdefd1 fwd="123.231.125.171" dyno=web.1 connect=0ms service=5ms status=200 bytes=73941 protocol=https
+2021-11-04T03:09:31.476890+00:00 heroku[router]: at=info method=GET path="/js/markdownit.js" host=water-chat.herokuapp.com request_id=4e781a82-501a-47b4-b9f2-143221b8a278 fwd="123.231.125.171" dyno=web.1 connect=0ms service=11ms status=200 bytes=193716 protocol=https
+2021-11-04T03:09:36.666414+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=water-chat.herokuapp.com request_id=113443bd-5322-4371-9c4b-377af9269059 fwd="123.231.125.171" dyno=web.1 connect=0ms service=5ms status=404 bytes=266 protocol=https
+2021-11-04T03:09:52.029934+00:00 heroku[router]: at=info method=GET path="/js/markdownit.js" host=water-chat.herokuapp.com request_id=cdd8edca-2cbc-440f-a90c-1e92d3749ba0 fwd="123.231.125.171" dyno=web.1 connect=0ms service=3ms status=304 bytes=239 protocol=https
+2021-11-04T03:09:52.039838+00:00 heroku[router]: at=info method=GET path="/js/socket.io.js" host=water-chat.herokuapp.com request_id=ad8ef7e9-fb2a-43dc-acf5-252ccb094498 fwd="123.231.125.171" dyno=web.1 connect=0ms service=5ms status=304 bytes=239 protocol=https
+2021-11-04T03:09:53.968017+00:00 heroku[router]: at=info method=GET path="/error?message=the%20user%20name%20cant%20be%20null" host=water-chat.herokuapp.com request_id=3cf94456-28eb-4bbf-be30-67522510dedf fwd="123.231.125.171" dyno=web.1 connect=0ms service=12ms status=200 bytes=890 protocol=https
+2021-11-04T03:12:17.622591+00:00 heroku[router]: at=info method=GET path="/" host=water-chat.herokuapp.com request_id=282f4746-f666-46e1-a70e-c2bc8a41b885 fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=152 protocol=https
+2021-11-04T03:12:17.971309+00:00 heroku[router]: at=info method=GET path="/js/socket.io.js" host=water-chat.herokuapp.com request_id=9d001c56-af90-4b7e-8f8f-f39a0362d5ed fwd="123.231.125.171" dyno=web.1 connect=0ms service=2ms status=304 bytes=239 protocol=https
+2021-11-04T03:12:17.971625+00:00 heroku[router]: at=info method=GET path="/js/markdownit.js" host=water-chat.herokuapp.com request_id=c2aa1a25-aeac-4fbf-869d-315bf169d7c8 fwd="123.231.125.171" dyno=web.1 connect=0ms service=2ms status=304 bytes=239 protocol=https
+2021-11-04T03:12:18.281334+00:00 heroku[router]: at=info method=GET path="/error?message=the%20user%20name%20cant%20be%20null" host=water-chat.herokuapp.com request_id=2c9aecd5-57de-4862-97a4-237e8777c607 fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=151 protocol=https
+2021-11-04T03:13:13.500820+00:00 heroku[router]: at=info method=GET path="/" host=water-chat.herokuapp.com request_id=7406d6f9-87e7-4381-b027-7ad299751973 fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=152 protocol=https
+2021-11-04T03:13:13.869610+00:00 heroku[router]: at=info method=GET path="/js/markdownit.js" host=water-chat.herokuapp.com request_id=71f141ac-bb39-4291-9e35-0495e656a29c fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=239 protocol=https
+2021-11-04T03:13:13.870599+00:00 heroku[router]: at=info method=GET path="/js/socket.io.js" host=water-chat.herokuapp.com request_id=ab4b5c48-437b-48fb-ab63-99dd24cbdceb fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=239 protocol=https
+2021-11-04T03:13:14.177736+00:00 heroku[router]: at=info method=GET path="/error?message=the%20user%20name%20cant%20be%20null" host=water-chat.herokuapp.com request_id=8fbdebce-f899-4881-aa39-a6226cdd6e3a fwd="123.231.125.171" dyno=web.1 connect=0ms service=7ms status=304 bytes=151 protocol=https
+2021-11-04T03:13:19.836404+00:00 heroku[router]: at=info method=GET path="/" host=water-chat.herokuapp.com request_id=0ccf19c7-fd6e-4de7-8907-8dc20f2ac7a3 fwd="123.231.125.171" dyno=web.1 connect=0ms service=2ms status=304 bytes=152 protocol=https
+2021-11-04T03:13:20.165673+00:00 heroku[router]: at=info method=GET path="/js/socket.io.js" host=water-chat.herokuapp.com request_id=780921ed-1e10-4c82-9ec9-99c52c2edb2f fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=239 protocol=https
+2021-11-04T03:13:20.184180+00:00 heroku[router]: at=info method=GET path="/js/markdownit.js" host=water-chat.herokuapp.com request_id=731e9f95-f01e-4cac-a225-99f2a42c54d6 fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=239 protocol=https
+2021-11-04T03:14:59.783874+00:00 heroku[router]: at=info method=GET path="/js/socket.io.js" host=water-chat.herokuapp.com request_id=b6caab09-a8d6-4860-9481-da25a602e7d1 fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=239 protocol=https
+2021-11-04T03:14:59.795686+00:00 heroku[router]: at=info method=GET path="/js/markdownit.js" host=water-chat.herokuapp.com request_id=8a00691c-bab0-4fb0-b8bf-c4cce6dd1a88 fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=239 protocol=https
+2021-11-04T03:15:02.390657+00:00 heroku[router]: at=info method=GET path="/dsdsdsd" host=water-chat.herokuapp.com request_id=40b19e80-ae78-492f-8de1-75855133f96f fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=404 bytes=266 protocol=https
+2021-11-04T03:24:40.546953+00:00 heroku[router]: at=info method=GET path="/online" host=water-chat.herokuapp.com request_id=ad3491a1-faa5-4c34-90b0-93f3a2a0eafd fwd="123.231.125.171" dyno=web.1 connect=5ms service=1ms status=403 bytes=267 protocol=http
+2021-11-04T03:24:49.046291+00:00 heroku[router]: at=info method=GET path="/" host=water-chat.herokuapp.com request_id=5aac6177-b032-443f-8534-e9d1a7a050ef fwd="123.231.125.171" dyno=web.1 connect=0ms service=1ms status=304 bytes=152 protocol=https
+2021-11-04T03:24:51.226333+00:00 heroku[router]: at=info method=GET path="/" host=water-chat.herokuapp.com request_id=193c13dd-781d-48b6-879f-35932bed1bd0 fwd="123.231.125.171" dyno=web.1 connect=0ms service=3ms status=200 bytes=6492 protocol=http
