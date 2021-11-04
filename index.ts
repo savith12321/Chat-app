@@ -4,6 +4,7 @@ import socketio from "socket.io";
 import chalk from "chalk";
 import config from "./config.json"
 import cookieParser from 'cookie-parser'
+import {formatMessage} from "./utils/messages"
 
 const app = express();
 const server = http.createServer(app);
@@ -114,10 +115,11 @@ io.on("connection", (socket: any) =>{
         members.splice(index, 1);
         //logger(members)
     });
-    socket.on("message", (data: string) =>{
-        socket.broadcast.emit("message", data)
-        socket.emit("message", data)
-        messages.push(data)
+    socket.on("message", (data: any) =>{
+        var message = formatMessage(data.username, data.message, data.admin)
+        socket.broadcast.emit("message", message)
+        socket.emit("message", message)
+        messages.push(message)
     })
 });
 

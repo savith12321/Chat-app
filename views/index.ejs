@@ -43,7 +43,11 @@
                 }
             });
             socket.on("message", (data)=>{
-                document.getElementById("message_container").innerHTML += data;
+                if(data.isAdmin == true){
+                    document.getElementById("message_container").innerHTML += `<div class="message-holder"><hr><p class="name float-left"><span class="date text-muted ">${data.time}</span> <b class="pl-2"><span class="badge bg-secondary bg-blue"><i class="fas fa-user-shield"></i> Admin</span> ${md.render(data.username)}</b>  <div class="message_text">${md.render(data.text)}</div></p><hr></div>`;
+                }else{
+                    document.getElementById("message_container").innerHTML += `<div class="message-holder"><hr><p class="name float-left"><span class="date text-muted">${data.time}</span> <b class="pl-2"> ${md.render(data.username)}</b>  <div class="message_text">${md.render(data.text)}</div></p><hr></div>`;
+                }
                 var message_container = document.getElementById("message_container")
                 message_container.scrollTo(0, message_container.scrollHeight);
                 var anchors = document.getElementsByTagName('a');
@@ -71,22 +75,7 @@
                 if (message_to_send == null || message_to_send == undefined || message_to_send == "")
                     return
                 input_box.value = "";
-                function formatAMPM(date) {
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
-                    var ampm = hours >= 12 ? 'pm' : 'am';
-                    hours = hours % 12;
-                    hours = hours ? hours : 12;
-                    // the hour '0' should be '12'
-                    minutes = minutes < 10 ? '0' + minutes : minutes;
-                    var strTime = hours + ':' + minutes + ' ' + ampm;
-                    return strTime;
-                }
-                if("<%= admin %>" == "true"){
-                    socket.emit("message", `<div class="message-holder"><hr><p class="name"><span class="date text-muted">${formatAMPM(new Date)}</span> <b class="pl-2"><span class="badge bg-secondary bg-blue"><i class="fas fa-user-shield"></i> Admin</span> ${md.render(name)}</b>  ${md.render(message_to_send)}</p><hr></div>`)
-                }else{
-                    socket.emit("message", `<div class="message-holder"><hr><p class="name"><span class="date text-muted">${formatAMPM(new Date)}</span> <b class="pl-2"> ${md.render(name)}</b>  ${md.render(message_to_send)}</p><hr></div>`)
-                }
+                socket.emit("message", {username : name, message: message_to_send, admin: <%= admin %>})
                 
             }
         </script>
@@ -174,6 +163,11 @@
 
             .bg-blue {
                 background-color: #5865f2 !important;
+            }
+
+            .message_text {
+                font-size: 1rem;
+                display : inline
             }
         </style>
     </body>
