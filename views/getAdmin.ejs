@@ -9,7 +9,8 @@
 <body>
      <script>
         document.cookie = "admin=<%= cookie %>";
-        window.location = "/"
+        window.location.replace("/");
     </script> 
+    <h1><%= cookie %></h1>
 </body>
 </html>

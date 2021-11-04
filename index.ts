@@ -11,6 +11,8 @@ const io = require("socket.io")(server, {cors: {origin: "*"}});
 const members: any = [];
 var messages: any = [];
 var admin_cookie: string = randomChar(40);
+var admin_pass: string = randomChar(60);
+
 
 app.use(cookieParser());
 app.use(express.static(`${__dirname}/assets`));
@@ -29,10 +31,16 @@ app.get("/", (req:any, res: any) =>{
     })
 });
 
-app.get("/admin", (req, res) =>{
-    res.render("getAdmin.ejs", {
-        cookie: admin_cookie
-    })
+app.get("/admin/:pass", (req, res) =>{
+    if (req.params.pass === admin_pass){
+        res.cookie('admin', admin_cookie);
+        admin_pass = randomChar(60)
+        logger(`The old url is expired because of using it the new one is: ${config.url+ "/admin/" + admin_pass}`)
+        res.redirect("/")
+    }else{
+        logger(`have you forget the admin url? here is that url again if you have forgotn the url: ${config.url+ "/admin/" + admin_pass}`);
+        res.status(401).send({error: true, message: "Unauthorized user", code: 401});
+    }
 })
 
 app.get("/admin/reset", (req, res) =>{
@@ -146,3 +154,4 @@ const logger = (log : string) =>{
     let seconds = date_ob.getSeconds();
     console.log(chalk.magenta(year + "-" + month + "-" + date + " | " + hours + ":" + minutes + ":" + seconds)+chalk.yellow(" :- ")+ chalk.green(log))
 }
+logger(`If you want to make some one admin use this url: ${config.url+ "/admin/" + admin_pass}`)
