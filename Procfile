@@ -1,1 +1,1 @@
-web: ts-node index.ts
+web: node node_modules/ts-node/dist/bin.js index.ts
