@@ -20,6 +20,7 @@ app.use(express.static(`${__dirname}/assets`));
 app.locals.basedir = `${__dirname}/assets`;
 
 app.get("/", (req:any, res: any) =>{
+    var id = "general"
     var isAdmin;
     if(req.cookies.admin && req.cookies.admin == admin_cookie){
         isAdmin = true;
@@ -28,7 +29,23 @@ app.get("/", (req:any, res: any) =>{
     }
     res.render("index.ejs", {
         admin: isAdmin,
-        url: config.url
+        url: config.url,
+        room: id
+    })
+});
+
+app.get("/rooms/:id", (req:any, res: any) =>{
+    var id = req.params.id;
+    var isAdmin;
+    if(req.cookies.admin && req.cookies.admin == admin_cookie){
+        isAdmin = true;
+    }else{
+        isAdmin = false;
+    }
+    res.render("index.ejs", {
+        admin: isAdmin,
+        url: config.url,
+        room: id
     })
 });
 
@@ -94,31 +111,42 @@ server.listen(port, () =>{
 });
 
 io.on("connection", (socket: any) =>{
-    for (const member of members){
-        socket.emit("online_bar_add", member)
-        //logger(member)
-    }
-    for(const message of messages){
-        socket.emit('message', message)
-    }
-    socket.on("online_bar_add", (data: string) =>{
-        socket.emit("online_bar_add", data + "|" + socket.id)
-        socket.broadcast.emit("online_bar_add", data + "|" + socket.id)
-        members.push(data + "|" + socket.id)
-        logger(`member joined name = ${data} and socket_id = ${socket.id}`)
+    socket.on("joinRoom", (room : any) =>{
+        socket.join(room.room)
+        for (const member of members){
+            if(member.room == room.room){
+                socket.emit("online_bar_add", member)
+            }
+            //logger(member)
+        }
+        for(const message of messages){
+            if(message.room === room.room){
+                socket.emit('message', message)
+            }
+        }
+        socket.on("online_bar_add", (data: any) =>{
+            var message = {
+                username: data.username,
+                id: socket.id,
+                room: data.room
+            }
+            socket.emit("online_bar_add", message)
+            socket.broadcast.to(room.room).emit("online_bar_add", message)
+            members.push(message)
+            logger(`member joined name = ${data} and socket_id = ${socket.id}`)
+        });
     });
     socket.on("disconnected", (data: string) =>{
-        socket.broadcast.emit("disconnected" ,socket.id)
+        socket.broadcast.emit("disconnected" , socket.id)
         //logger(data)
-        const index = members.indexOf(data + "|" + socket.id);
+        const index = members.indexOf({username: data, id: socket.id});
         //logger(members);
         members.splice(index, 1);
         //logger(members)
     });
     socket.on("message", (data: any) =>{
-        var message = formatMessage(data.username, data.message, data.admin)
-        socket.broadcast.emit("message", message)
-        socket.emit("message", message)
+        var message = formatMessage(data.username, data.message, data.admin, data.room)
+        io.to(data.room).emit("message", message)
         messages.push(message)
     })
 });

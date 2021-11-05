@@ -25,6 +25,7 @@
         </div>
         <script>
             var md = window.markdownit().enable(['link']).enable('image');
+            var room = "<%= room %>"
             const name = prompt("Please type a user name");
             console.log(name)
             if (name == undefined || name == null || name == "") {
@@ -36,7 +37,8 @@
                 socket.emit("disconnected", name)
             }, false);
             const socket = io.connect("<%= url %>");
-            socket.emit("online_bar_add", name)
+            socket.emit("joinRoom", {room: room, name: name});
+            socket.emit("online_bar_add", {username: name, room: room});
 
             document.addEventListener("keyup", function(event) {
                 if (event.keyCode === 13) {
@@ -62,8 +64,8 @@
             }
             )
             socket.on("online_bar_add", (data)=>{
-                var name = data.split("|")[0]
-                var id = data.split("|")[1]
+                var name = data.username
+                var id = data.id
 
                 var online_bar = document.querySelector(".online_bar").innerHTML += `<h6 id="${id}">${md.render(name)}</h6>`;
             }
@@ -76,7 +78,7 @@
                 if (message_to_send == null || message_to_send == undefined || message_to_send == "")
                     return
                 input_box.value = "";
-                socket.emit("message", {username : name, message: message_to_send, admin: <%= admin %>})
+                socket.emit("message", {username : name, message: message_to_send, admin: <%= admin %> , room: room})
                 
             }
         </script>
