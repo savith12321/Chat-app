@@ -4,7 +4,8 @@
   "description": "Imagine a place that is 1000x times worst thane DISCORD, lol.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "clear ; nodemon index.ts",
+    "build-css": "tailwindcss build -i tail-windcss/styles.css -o assets/css/index.css"
   },
   "keywords": [],
   "author": "",
