@@ -1,12 +1,12 @@
-import moment from "moment"
-
-function formatMessage(username : string, text : string, isAdmin : boolean , room: string) {
+function formatMessage(username : string, text : string, time: string, isAdmin : boolean , room: string, isBot: boolean, id: any) {
   return {
     username,
     text,
-    time: moment().format('h:mm a'),
+    time,
     isAdmin,
     room: room,
+    isBot,
+    id: id.length + 1, 
   };
 }
 
